@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  localstack:
+    image: localstack/localstack:0.7.4
+    ports:
+      - '4576:4576'
+      - '4575:4575'
+    environment:
+      - SERVICES=sqs:4576,sns:4575
+      - DEBUG=true
+      - DEFAULT_REGION=us-east-1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "./target/localstack:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - internal
+
+networks:
+  external:
+  internal:

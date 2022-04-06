@@ -1,0 +1,9 @@
+	
+{
+    "topicArn": "",
+    "phoneNumber": "",
+    "targetArn": "",
+    "message": "This is a test in publish topic",
+    "subject": "SNS test topic",
+    "messageStructure": ""
+}

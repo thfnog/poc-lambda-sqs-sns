@@ -1,0 +1,38 @@
+service: aws-sqs-worker
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  memorySize: 128
+  timeout: 300
+  region: us-east-1
+  environment:
+    SQS_ENDPOINT_URL: http://localhost:4576
+    SNS_ENDPOINT_URL: http://localhost:4575
+    SQS_QUEUE_URL: http://localhost:4576/123456789012/TEST_QUEUE
+    SNS_TOPIC: arn:aws:sns:us-east-1:123456789012:TEST_TOPIC
+
+functions:
+  producer:
+    handler: src/sqs-producer.handler    
+
+  consumer:
+    handler: src/sqs-consumer.handler
+
+  publish:
+    handler: src/sns-publish.handler
+
+  subscribe:
+    handler: src/sns-subscribe.handler
+
+  unsubscribe:
+    handler: src/sns-unsubscribe.handler
+
+plugins:
+  - serverless-python-requirements
+package:
+  patterns:
+    - '!node_modules/**'
