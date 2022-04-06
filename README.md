@@ -3,7 +3,7 @@
 Example Python App Consuming and Producing messages to AWS SQS/SNS
 
 ### Local Docker Environment
-The example code relies on a running SQS service, the repo contains a Docker compose file that will spin up a configured SQS using Localstack.
+The example code relies on a running SQS service, the repo contains a Docker compose file that will spin up a configured SQS/SNS using Localstack.
 
 * Install Docker Toolbox - [Instructions](https://www.docker.com/products/docker-toolbox)
 
